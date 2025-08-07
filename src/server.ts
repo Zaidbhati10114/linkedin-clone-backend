@@ -16,6 +16,10 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.json({ message: 'Welcome to LinkedIn Clone API' });
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
@@ -25,6 +29,8 @@ app.use('/api/users', userRoutes);
 app.get('/api/health', (req, res) => {
     res.json({ message: 'Server is running!' });
 });
+
+
 
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI as string)
